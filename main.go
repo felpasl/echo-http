@@ -5,6 +5,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 	"time"
@@ -43,7 +44,13 @@ func main() {
 		response.WriteString(fmt.Sprintf("Method: %s\n\n", r.Method))
 		response.WriteString(fmt.Sprintf("Path: %s\n\n", r.URL.Path))
 		response.WriteString("Headers:\n")
-		for k, v := range r.Header {
+		var keys []string
+		for k := range r.Header {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+		for _, k := range keys {
+			v := r.Header[k]
 			response.WriteString(fmt.Sprintf("%s: %s\n", k, strings.Join(v, ", ")))
 		}
 		response.WriteString("\n")
