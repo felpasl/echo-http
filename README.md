@@ -29,13 +29,13 @@ go run main.go
 ### Docker
 
 ```bash
-docker run -p 8080:8080 felpasl/echo-http
+docker run -p 8080:8080 ghcr.io/felpasl/echo-http:latest
 ```
 
 With environment variables:
 
 ```bash
-docker run -p 8080:8080 -e DELAY=500 -e STATUS_CODE=201 felpasl/echo-http
+docker run -p 8080:8080 -e DELAY=500 -e STATUS_CODE=201 ghcr.io/felpasl/echo-http:latest
 ```
 
 ### Testing
@@ -71,12 +71,12 @@ go build -o echo-http .
 ### Docker Image
 
 ```bash
-docker build -t felpasl/echo-http .
+docker build -t ghcr.io/felpasl/echo-http:latest .
 ```
 
 ## Deployment
 
-The project includes GitHub Actions for automated building and pushing to GitHub Packages.
+The project includes GitHub Actions for automated building and pushing to GitHub Packages as `ghcr.io/felpasl/echo-http:latest`.
 
 ## Logging
 
